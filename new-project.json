@@ -1,0 +1,58 @@
+{
+  "name": "Create a New Project",
+  "key": "new-project",
+  "steps": [
+    {
+      "title": "Overview",
+      "content": "<!--\n-->\n<p>\nThis guided tour takes you through the basic steps of project creation and setup.\n</p>\n<p>\nAlong the way you will create keys, \nwrite access control policy, \nand declare nodes.\n</p>\n<h6>Next, creating keys</h6>\n\n",
+      "nextStepUrl": "menu/storage"
+    },
+    {
+      "title": "Keys",
+      "content": "<!--\n-->\n<p>\nYour project will need a default password or key.\n</p>\n\n<p>\nPress \"+ Add or Upload a Key\" button.\n</p>\n<p>For an SSH private key:\n</p>\n<ul>\n\t<li><i>Key type</i>: Private Key</li>\n\t<li><i>Enter text</i>: Enter your SSH key data here</li>\n\t<li><i>Storage path</i>: keys/MyProject/default</li>\n\t<li><i>Name</i>: Eg: node.key</li>\n</ul>\n<p>For a password:\n</p>\n<ul>\n\t<li><i>Key type</i>: Password</li>\n\t<li><i>Enter text</i>: Enter your password</li>\n\t<li><i>Storage path</i>: keys/MyProject/default</li>\n\t<li><i>Name</i>: Eg: node.password</li>\n</ul>\n<h6>Next: new projects</h6>\n",
+      "nextStepUrl": "menu/home"
+    },
+    {
+      "title": "Projects home",
+      "content": "<!--\n-->\n<p>\nThe home page contains a listing of projects. You can also find the projects listed in the left navigation bar.\n</p>\n<p>\nPress the <a href=\"/resources/createProject\">New Project + </a> button.\n</p>\n\n<h6>Name and description</h6>\n",
+      "nextStepUrl": "resources/createProject"
+    },
+    {
+      "title": "Name and description",
+      "content": "<!--\n-->\n<dl>\n<dt>Name</dt>\n<dd>For the project name specify \"MyProject\". Project names cannot contain spaces nor special characters.</dd>\n<dt>Label</dt>\n<dd>\nSet the project label to \"My Project\" if you don't like camel case spelling and want a space.\n</dd>\n<dt>Description</dt>\n<dd>\nSet the description to a one line brief overview useful to your users.\t\n</dd>\n</dl>\n<h6>Next: Node Executor</h6>\n"
+    },
+    {
+      "title": "Node executor",
+      "content": "<!--\n-->\n<p>The node executor is a plugin that sends and executes command strings on nodes.\nSSH is automatically picked in the form.\n</p>\n<p>The SSH plugin supports two types of authentication: Password and Private Key</p>\n<dl>\n\t<dt>Private Key</dt>\n\t<dd>Select the key you created for the \"SSH Key Storage Path\".</dd>\n<dt>Password</dt>\n<dd>Select the password you crated for the \"SSH Passwword Storage Path\".</dd>\n</dl>\n\n<h6>Next: File Copier</h6>\n"
+    },
+    {
+      "title": "File Copier",
+      "content": "<!--\n-->\n<p>The file copier is a plugin that copies files from the rundeck server to remote nodes. Script files are copied to remote nodes using the file copier.\n</p>\n<p>The SCP plugin supports two types of authentication: Password and Private Key</p>\n<dl>\n\t<dt>Private Key</dt>\n\t<dd>Select the key you created for the \"SSH Key Storage Path\".</dd>\n<dt>Password</dt>\n<dd>Select the password you crated for the \"SSH Passwword Storage Path\".</dd>\n</dl>\n<p>Press the Create button at the bottom of the form</p>\n<h6>Next: Nodes</h6>\n",
+      "nextStepUrl": "project/MyProject/nodes/sources/edit"
+    },
+    {
+      "title": "Add a Node Source",
+      "content": "<!--\n-->\n<p>Node sources are how you define the nodes you will run your job steps.\n</p>\n<p>You will see a \"Local\" node source which defines the Rundeck server as a Node.\n</p>\n<p>You may add additional sources by pressing the \"Add Source +\" button.\n</p>\n<h6>Next: Readme</h6>\n",
+      "nextStepUrl": "resources/editProjectFile?project=MyProject&filename=readme.md"
+    },
+    {
+      "title": "Readme",
+      "content": "<!--\n-->\n<p>\nA Readme is a good place to share additonal information to your users. It might contain links to related tools or even embed images.\n</p>\n<p>The Readme text is in <a href=\"https://daringfireball.net/projects/markdown/syntax\" target=\"_blank\">Markdown syntax</a>\n</p>\n<h6>Next: Access Control</h6>\n",
+      "nextStepUrl": "menu/acls"
+    },
+    {
+      "title": "Access Control",
+      "content": "<!--\n-->\n<p>You will create a system ACL policy to declare access to the keys and the project.\n</p>\n<p>Name it \"MyProject\"</p>\n<h6>Next: Project access</h6>\n",
+      "nextStepUrl": "menu/acls/create?fileType=storage"
+    },
+    {
+      "title": "Project access",
+      "content": "<!--\n-->\n<p>Grant access to the project you will create.\n</p>\n<p>In the Editor tab paste the following rule:\n</p>\n<p>\n\t<code>\nby:\n  group: anvils\ndescription: 'Allow [read] for MyProject.'\nfor:\n  project:\n    - allow: [read]\n      match:\n        name: MyProject\ncontext:\n  application: rundeck\n  </code>\n  </p>\n<h6>Next: Key access</h6>  \n"
+    },
+    {
+      "title": "Key access",
+      "content": "<!--\n-->\n<p>Grant access to the keys.\n</p>\n<p>In the Editor tab paste the following rule:</p>\n<p>\n\t<pre>\nby:\n  group: anvils\ndescription: Allow [*] for storage\nfor:\n  storage:\n  - allow:\n    - '*'\n    equals:\n      path: MyProject\n      name: .*\ncontext:\n  application: rundeck</pre>\n  </p>\n<h6>The End</h6>\n",
+      "nextStepUrl": "menu/home"
+    }
+  ]
+}
