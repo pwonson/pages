@@ -1,0 +1,33 @@
+{
+    "name": "Trial Tours", 
+    "tours": [
+        {
+            "key": "understanding-your-trial", 
+            "name": "Understanding Your Trial"
+        }, 
+        {
+            "key": "getting-started", 
+            "name": "Getting Started"
+        }, 
+        {
+            "key": "Enterprise-Features", 
+            "name": "Enterprise Features"
+        }, 
+        {
+            "key": "ANVILS-ONLINE", 
+            "name": "ANVILS-ONLINE"
+        }, 
+        {
+            "key": "E-OPTIONS", 
+            "name": "E-OPTIONS"
+        }, 
+        {
+            "key": "new-project", 
+            "name": "Create a New Project"
+        }, 
+        {
+            "key": "Pam-test", 
+            "name": "Pam-test"
+        }
+    ]
+}
